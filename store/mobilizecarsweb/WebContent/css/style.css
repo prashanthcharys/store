@@ -1,0 +1,67 @@
+label {
+	display:block;
+	float:left;
+	clear:both;
+	font-weight:bold; 
+	width:100px;	
+}
+fieldset legend {
+	font-size:24px;	
+	color:#000066	
+}
+fieldset{
+ 	margin-left:300px;
+ 	height:300px; 
+	width:600px; 
+	float:left; 
+	border:solid #990000;
+ }
+body {
+	background-color:#ffffff;
+} 
+
+.divTable {
+	display:  table;
+	width:auto;	
+	border:0px solid  #666666;
+	float:left;
+}
+.divRow {
+   display:table-row;
+   width:auto; 
+}
+.headRow{
+   display:table-row;
+   width:auto; 
+}
+.divCell  {
+	float:left;/*fix for  buggy browsers*/         
+	display:table-column;         
+	width:200px;         
+} 
+
+#header {
+	display:block;
+	padding:0px 0px 5px 0px;
+	margin:0px 20px;
+	height:80px;
+	width:1000px;
+	float:left;
+	border:0px solid #ccf;
+	text-align:center;
+}
+#header h1 {
+	font-size:large;
+	margin-bottom:5px;
+	color:#333333;
+	
+}
+#content {
+	display:block;
+	padding:0px 0px 5px 0px;
+	margin:0px 0px 0px 200px;
+	height:600px;
+	width:600px;
+	float:left;
+	border:0px solid #ccf;
+}

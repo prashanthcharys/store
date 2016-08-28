@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.SearchCriteriaMapper">
+
+    <resultMap id="searchCriteriaResultMap" type="SearchCriteriaVO">
+        <id property="uid" column="UID" />
+        <result property="criteriaId" column="CRITERIAID" />
+        <result property="criteria" column="CRITERIA" />
+        <result property="timeStamp" column="SEARCH_CRI_TIMESTAMP" />
+        
+    </resultMap>
+
+	    
+    <select id="getSearchCriteriaByUid" parameterType="String" resultType="com.mobilize.core.domain.value.SearchCriteriaVO">
+        SELECT *
+        FROM SEARCH_CRITERIA
+        WHERE UID = #{uid}
+    </select>
+    <select id="getSearchCriteriaByCriteriaId" parameterType="String" resultType="com.mobilize.core.domain.value.SearchCriteriaVO">
+        SELECT *
+        FROM SEARCH_CRITERIA
+        WHERE CRITERIAID = #{criteriaId}
+    </select>
+    <insert id="insertSearchCriteria" parameterType="com.mobilize.core.domain.value.SearchCriteriaVO" >
+		INSERT 
+		INTO SEARCH_CRITERIA
+		VALUES(#{uid},#{criteriaId},#{criteria},now())
+	</insert>    
+    <update id="updateSearchCriteriaById" parameterType="com.mobilize.core.domain.value.SearchCriteriaVO" >
+		UPDATE SEARCH_CRITERIA 
+		SET 
+		CRITERIAID=#{criteriaId} ,
+		CRITERIA=#{criteria},
+		SEARCH_CRI_TIMESTAMP=now()		
+		WHERE 
+		UID=#{uid}
+    </update>
+    <delete id="deleteSearchCriteriaById" parameterType="String" >
+        DELETE
+		FROM SEARCH_CRITERIA 
+		WHERE 
+		UID=#{id}
+    </delete>
+    
+ </mapper>

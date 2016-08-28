@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserCriteria Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.BuyerCriteriaMapper">
+
+    <resultMap id="buyerCriteriaResultMap" type="BuyerCriteriaVO">
+        <id property="uid" column="UID" />
+        <id property="id" column="CRITID" />
+        <result property="yearFrom" column="YEAR_FROM" />
+        <result property="yearTo" column="YEAR_TO" />
+		<result property="make" column="MAKE" />
+        <result property="model" column="MODEL" />
+		<result property="color" column="COLOR" />
+        <result property="priceFrom" column="PRICE_FROM" />
+		<result property="priceTo" column="PRICE_TO" />
+        <result property="mileage" column="MILEAGE" />
+        <result property="radius" column="RADIUS" />
+        <result property="yearPref" column="YEAR_PREF"/>
+        <result property="makePref" column="MAKE_PREF"/>
+        <result property="modelPref" column="MODEL_PREF"/>
+        <result property="colorPref" column="COLOR_PREF"/>
+        <result property="pricePref" column="PRICE_PREF"/>
+        <result property="mileagePref" column="MILEAGE_PREF"/>
+        <result property="radiusPref" column="RADIUS_PREF"/>
+        <result property="timeStamp" column="USR_CRI_TIMESTAMP" />        
+    </resultMap>
+
+    <resultMap id="buyerCriteriaSummaryResultMap" type="BuyerCriteriaSummaryVO">
+        <id property="uid" column="UID" />
+        <id property="id" column="CRITID" />
+		<result property="make" column="MAKE" />
+        <result property="model" column="MODEL" />
+		<result property="color" column="COLOR" />
+    </resultMap>
+
+    <select id="getBuyerCriteriaById" parameterType="String" resultMap="buyerCriteriaResultMap">
+        SELECT *
+        FROM 
+        	BUYER_CRITERIA
+        WHERE 
+        	UID = #{uid}
+    </select>
+    
+    <select id="getBuyerCriteriaSummaryById" parameterType="String" resultMap="buyerCriteriaSummaryResultMap">
+        SELECT UID, CRITID, MAKE, MODEL, COLOR
+        FROM 
+        	BUYER_CRITERIA
+        WHERE 
+        	UID = #{uid}
+    </select>
+    
+    
+	<select id="getBuyerCriteriaByCritId" resultMap="buyerCriteriaResultMap">
+        SELECT *
+        FROM 
+        	BUYER_CRITERIA
+        WHERE 
+        	UID= #{uid} AND CRITID= #{id}
+    </select>
+    
+    <insert id="insertBuyerCriteria" parameterType="com.mobilize.core.domain.value.BuyerCriteriaVO" >
+		INSERT INTO BUYER_CRITERIA 
+		(
+			UID,
+    	 	CRITID,
+    		YEAR_FROM,
+    		YEAR_TO,
+    		MAKE,
+    		MODEL,
+    		COLOR,
+    		PRICE_FROM,
+    		PRICE_TO,
+    		MILEAGE,
+    		RADIUS,
+    		YEAR_PREF,
+    		MAKE_PREF,
+    		MODEL_PREF,
+    		COLOR_PREF,
+    		PRICE_PREF,
+    		MILEAGE_PREF,
+    		RADIUS_PREF,
+    		USR_CRI_TIMESTAMP
+		)
+		VALUES
+		(
+			#{uid},
+			#{id},
+			#{yearFrom},
+			#{yearTo},
+			#{make},
+			#{model},
+			#{color},
+			#{priceFrom},
+			#{priceTo},
+			#{mileage},
+			#{radius},
+			#{yearPref},
+			#{makePref},
+			#{modelPref},
+			#{colorPref},
+			#{pricePref},
+			#{mileagePref},
+			#{radiusPref},
+			now()
+		)
+	</insert>
+	
+    <update id="updateBuyerCriteria" parameterType="com.mobilize.core.domain.value.BuyerCriteriaVO">
+		UPDATE BUYER_CRITERIA 
+		SET 
+			YEAR_FROM=#{yearFrom}, 
+			YEAR_TO=#{yearTo}, 
+			MAKE=#{make}, 
+			MODEL=#{model} ,
+			COLOR=#{color}, 
+			PRICE_FROM=#{priceFrom}, 
+			PRICE_TO=#{priceTo}, 
+			MILEAGE=#{mileage}, 
+			RADIUS=#{radius} ,
+    		YEAR_PREF=#{yearPref},
+    		MAKE_PREF=#{makePref},
+    		MODEL_PREF=#{modelPref},
+    		COLOR_PREF=#{colorPref},
+    		PRICE_PREF=#{pricePref},
+    		MILEAGE_PREF=#{mileagePref},
+    		RADIUS_PREF=#{radiusPref},
+    		USR_CRI_TIMESTAMP  = now()
+		WHERE 
+			UID= #{uid} AND CRITID= #{id}
+    </update>
+    <delete id="deleteBuyerCriteriaById" parameterType="String" >
+        DELETE
+		FROM 
+			BUYER_CRITERIA 
+		WHERE 
+			UID=#{uid}
+    </delete>
+    <delete id="deleteBuyerCriteriaByCritId">
+        DELETE
+		FROM 
+			BUYER_CRITERIA 
+		WHERE 
+			UID= #{uid} AND CRITID= #{id}
+    </delete>
+</mapper>

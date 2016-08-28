@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mobilizecarscore"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/antlr-runtime-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/mybatis-3.1.1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/mybatis-spring-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-aop-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-asm-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-aspects-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-beans-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-context-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-context-support-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-core-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="/mobilizecarscore/lib/spring-expression-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="lib/spring-webmvc-3.2.0.M1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
+</classpath>

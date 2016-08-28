@@ -1,0 +1,6 @@
+.divRow:nth-of-type(odd) {
+	background-color:#C8C8C8;
+}
+.headRow{
+	background-color:#6F6F6F; 
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.SellerMapper">
+
+    <resultMap id="sellerResultMap" type="UserDetailsVO">
+        <id property="uid" column="UID" />
+        <result property="firstName" column="FIRSTNAME" />
+        <result property="lastName" column="LASTNAMR" />
+		<result property="addressLine1" column="ADDRESSLINE1" />
+        <result property="addressLine2" column="ADDRESSLINE2" />
+		<result property="city" column="CITY" />
+        <result property="state" column="STATE" />
+		<result property="zip" column="ZIP" />
+		<result property="lati" column="LATI" />
+		<result property="longi" column="LONGI" />
+        <result property="country" column="COUNTRY" />
+		<result property="homePhone" column="HOMEPHONE" />
+        <result property="mobilePhone" column="MOBILEPHONE" />
+		<result property="emailId" column="EMAILID" />
+		<result property="timeStamp" column="USR_DTL_TIMESTAMP" />		
+    </resultMap>
+     <select id="getAllSellers" resultType="com.mobilize.core.domain.value.UserDetailsVO">
+        SELECT *
+        FROM SELLER_DETAILS        
+    </select>
+    <select id="getLocations" resultType="com.mobilize.core.domain.value.LocationVO">
+        SELECT 
+        	UID AS userId,
+        	LATI AS latitude,
+        	LONGI AS longitude
+        FROM SELLER_DETAILS        
+    </select>
+    
+    <update id="updateLocation" parameterType="com.mobilize.core.domain.value.LocationVO" >
+		UPDATE SELLER_DETAILS 
+		SET 
+			LATI=#{latitude} ,
+			LONGI=#{longitude}
+		WHERE 
+			UID=#{userId}
+    </update> 
+    <select id="getUserDetailsById" parameterType="String" resultMap="sellerResultMap">
+        SELECT *
+        FROM SELLER_DETAILS
+        WHERE UID = #{uid}
+    </select>
+    <insert id="insertUserDetails" parameterType="com.mobilize.core.domain.value.UserDetailsVO" >
+		INSERT 
+		INTO SELLER_DETAILS
+		VALUES(#{uid},#{firstName},#{lastName},#{addressLine1},#{addressLine2},#{city},#{state},#{zip},#{lati},#{longi},#{country},#{homePhone},#{mobilePhone},#{emailId},now())
+	</insert>    
+    <update id="updateUserDetailsById" parameterType="com.mobilize.core.domain.value.UserDetailsVO" >
+		UPDATE SELLER_DETAILS 
+		SET 
+		FIRSTNAME=#{firstName} ,
+		LASTNAME=#{lastName} ,
+		ADDRESSLINE1=#{addressLine1} ,
+		ADDRESSLINE2=#{addressLine2} ,
+		CITY=#{city} ,
+		STATE=#{state} ,
+		ZIP=#{zip} ,
+		LATI=#{lati} ,
+		LONGI=#{longi} ,
+		COUNTRY=#{country} ,
+		HOMEPHONE=#{homePhone} ,
+		MOBILEPHONE=#{mobilePhone} ,
+		EMAILID=#{emailId} ,
+		USR_DTL_TIMESTAMP = now()
+		WHERE 
+		UID=#{uid}
+    </update>
+    <delete id="deleteUserDetailsById" parameterType="String" >
+        DELETE
+		FROM SELLER_DETAILS 
+		WHERE 
+		UID=#{uid}
+    </delete>        
+ </mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.CarDetailsMapper">
+    <resultMap id="carDetailsResultMap" type="CarDetailsVO">
+        <id property="uid" column="UID" />
+        <result property="id" column="CARID" />
+        <result property="make" column="MAKE" />
+		<result property="model" column="MODEL" />
+        <result property="year" column="YEAR" />
+		<result property="color" column="COLOR" />
+		<result property="zipCode" column="ZIPCODE" />
+        <result property="mileage" column="MILEAGE" />
+        <result property="timeStamp" column="CAR_DTL_TIMESTAMP" />        
+    </resultMap>
+    
+    <select id="getAllCarDetails" resultType="com.mobilize.core.domain.value.CarDetailsVO">
+        SELECT *
+        FROM CAR_DETAILS        
+    </select>
+    <select id="getCarDetailsByUid" resultType="com.mobilize.core.domain.value.CarDetailsVO">
+        SELECT *
+        FROM CAR_DETAILS
+        WHERE UID = #{uid}
+    </select>
+    <select id="getCarDetailsByZip"  resultType="com.mobilize.core.domain.value.CarDetailsVO">
+        SELECT *
+        FROM CAR_DETAILS
+        WHERE UID in (SELECT UID FROM USER_DETAILS WHERE ZIP IN (#{zipCode}))
+    </select>
+    <select id="getCarSummaryByZipCodes"  resultType="com.mobilize.core.domain.value.CarSummaryVO">
+        SELECT UID AS uid
+  			,CARID AS id
+  			,MAKE AS make
+  			,MODEL AS model
+        FROM CAR_DETAILS
+        WHERE ZIPCODE IN #{zips}
+    </select>
+    <select id="getCarSummaryByUserIds" resultType="com.mobilize.core.domain.value.CarSummaryVO">
+        SELECT UID AS uid
+  			,CARID AS id
+  			,MAKE AS make
+  			,MODEL AS model
+        FROM CAR_DETAILS
+        WHERE UID IN 
+        <foreach item="item" index="index" collection="list"
+      		open="(" separator="," close=")">
+        	#{item}
+  		</foreach>
+    </select>    
+    <select id="getCarDetailsByCarId" resultType="com.mobilize.core.domain.value.CarDetailsVO">
+    	SELECT 
+    		A.UID 			AS uid
+    		,A.CARID 		AS id
+			,A.YEAR   		AS year
+			,A.MAKE     	AS make
+			,A.MODEL    	AS model
+			,A.COLOR    	AS color
+			,A.MILEAGE  	AS mileage
+			,A.PRICE    	AS price
+			,A.COMMENTS 	AS comments
+			,B.FIRSTNAME 	AS sellerName
+			,B.EMAILID      AS emailId
+			,B.MOBILEPHONE  AS mobilePhone
+		FROM CAR_DETAILS A, SELLER_DETAILS B
+		WHERE A.CARID = #{id}
+		      AND A.UID = B.UID
+    </select>
+    <insert id="insertCarDetails" parameterType="com.mobilize.core.domain.value.CarDetailsVO" >
+		INSERT 
+		INTO CAR_DETAILS
+		VALUES(#{uid},#{id},#{year},#{make},#{model},#{color},#{mileage},#{price},#{zipCode},#{comments},now())
+	</insert>    
+    <update id="updateCarDetailsById" parameterType="com.mobilize.core.domain.value.CarDetailsVO" >
+		UPDATE CAR_DETAILS 
+		SET 
+		MAKE=#{make} ,
+		MODEL=#{model} ,
+		YEAR=#{year} ,
+		COLOR=#{color},
+		ZIPCODE=#{zipCode},
+		MILEAGE=#{mileage},
+		PRICE=#{price},
+		COMMENTS=#{comments},
+		CAR_DTL_TIMESTAMP = now()		
+		WHERE 
+		UID=#{uid}
+		AND
+		CARID=#{id}
+    </update>
+    <delete id="deleteCarDetailsById" parameterType="String" >
+        DELETE
+		FROM CAR_DETAILS 
+		WHERE 
+		UID=#{uid}
+    </delete>     
+    
+ </mapper>

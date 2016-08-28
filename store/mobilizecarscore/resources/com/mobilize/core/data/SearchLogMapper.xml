@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.SearchLogMapper">
+
+    <resultMap id="searchLogResultMap" type="SearchLogVO">
+        <id property="id" column="UID" />
+        <result property="make" column="MAKE" />
+		<result property="model" column="MODEL" />
+		<result property="color" column="COLOR" />
+        <result property="year" column="YEAR" />
+    </resultMap>
+
+    
+    <select id="getSearchLogById" parameterType="String" resultMap="searchLogResultMap">
+        SELECT *
+        FROM SEARCH_LOG
+        WHERE UID = #{id}
+    </select>
+    <insert id="insertSearchLog" parameterType="com.mobilize.core.domain.value.SearchLogVO" >
+		INSERT 
+		INTO SEARCH_LOG
+		VALUES(#{id},#{make},#{model},,#{color}#{year})
+	</insert>    
+    <update id="updateSearchLogById" parameterType="com.mobilize.core.domain.value.SearchLogVO" >
+		UPDATE SEARCH_LOG 
+		SET 
+		MAKE=#{make} ,
+		MODEL=#{model} ,
+		COLOR=#{color} ,
+		YEAR=#{year} 
+		WHERE 
+		UID=#{id}
+    </update>
+    <delete id="deleteSearchLogById" parameterType="String" >
+        DELETE
+		FROM SEARCH_LOG 
+		WHERE 
+		UID=#{id}
+    </delete>     
+    
+ </mapper>

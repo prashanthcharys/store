@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.UserMapper">
+
+    <resultMap id="userResultMap" type="UserVO">
+        <id property="uid" column="UID" />
+        <result property="userId" column="USERID" />
+        <result property="password" column="PASSWORD" />
+        <result property="status" column="STATUS" />      
+        <result property="userType" column="USR_TYPE" />  
+        <result property="timeStamp" column="USR_TIMESTAMP" />
+        
+    </resultMap>
+    
+    <select id="getUserById" parameterType="String" resultMap="userResultMap">
+        SELECT
+        UID,
+        USERID,
+        PASSWORD,
+        USR_TYPE,
+        USR_TIMESTAMP
+        FROM USER
+        WHERE USERID = #{id}
+    </select>
+    
+    <insert id="insertUser" parameterType="com.mobilize.core.domain.value.UserVO" >
+		INSERT
+		INTO USER 
+		VALUES(#{uid},#{userId},#{password},#{status},#{userType},now())
+	</insert>
+	
+    <update id="updateUser" parameterType="com.mobilize.core.domain.value.UserVO" >
+		UPDATE USER 
+		SET 
+			PASSWORD=#{password},
+			USR_TYPE=#{userType},
+			USR_TIMESTAMP=now()
+		WHERE 
+			UID=#{uid}
+    </update>
+    <delete id="deleteUser" parameterType="com.mobilize.core.domain.value.UserVO" >
+        DELETE
+		FROM USER
+		WHERE 
+			UID=#{uid}
+    </delete>
+    
+<select id="getUsers"  resultType="UserVO">
+   SELECT * FROM USER
+</select>
+</mapper>

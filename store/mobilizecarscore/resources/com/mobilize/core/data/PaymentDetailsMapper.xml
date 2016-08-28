@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.PaymentDetailsMapper">
+
+    <resultMap id="paymentDetailsResultMap" type="PaymentDetailsVO">
+        <id property="uid" column="UID" />
+        <result property="cardNumber" column="CARDNUMBER" />
+        <result property="carId" column="CARID" />
+		<result property="amount" column="AMOUNT" />
+        <result property="transactionDate" column="TRANSACTIONDATE" />
+        <result property="timeStamp" column="PAY_DTL_TIMESTAMP" />
+        
+    </resultMap>
+    
+    <select id="getPaymentDetailsById" parameterType="String" resultType="PaymentDetailsVO">
+        SELECT *
+        FROM PAYMENT_DETAILS
+        WHERE UID = #{uid}
+    </select>
+    <insert id="insertPaymentDetails" parameterType="com.mobilize.core.domain.value.PaymentDetailsVO" >
+		INSERT 
+		INTO PAYMENT_DETAILS
+		VALUES(#{uid},#{cardNumber},#{carId},#{amount},#{transactionDate},now())
+	</insert>    
+    <update id="updatePaymentDetailsById" parameterType="com.mobilize.core.domain.value.PaymentDetailsVO" >
+		UPDATE PAYMENT_DETAILS 
+		SET 
+		CARDNUMBER=#{cardNumber} ,
+		CARID=#{cardNumber} ,
+		AMOUNT=#{amount} ,
+		TRANSACTIONDATE=#{transactionDate},
+		PAY_DTL_TIMESTAMP = now()
+		WHERE 
+		UID=#{uid}
+		AND
+		CARID=#{cardNumber}
+    </update>
+    <delete id="deletePaymentDetailsById" parameterType="com.mobilize.core.domain.value.PaymentDetailsVO" >
+        DELETE
+		FROM PAYMENT_DETAILS 
+		WHERE 
+		UID=#{uid}
+		AND
+		CARID=#{cardNumber}
+    </delete>
+    
+ </mapper>

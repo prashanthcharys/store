@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.UIDGenMapper">
+    <resultMap id="uidResultMap" type="UIDGenVO">
+        <id property="objId" column="OBJID" />
+        <result property="objectType" column="OBJTYPE" />
+        <result property="count" column="COUNT" />
+        <result property="timeStamp" column="UID_GEN_TIMESTAMP" />
+        
+    </resultMap>
+    
+    <select id="getUIDObjByType" parameterType="String" resultMap="uidResultMap">
+        SELECT
+        OBJID,
+        OBJTYPE,
+        COUNT,
+        UID_GEN_TIMESTAMP
+        FROM UID_GEN
+        WHERE OBJTYPE = #{type}
+    </select>
+    
+    <insert id="insertUIDObj" parameterType="com.mobilize.core.domain.value.UIDGenVO" >
+		INSERT
+		INTO UID_GEN 
+		VALUES(#{objId},#{objectType},#{count},now())
+	</insert>
+    <update id="updateUIDObjById" parameterType="com.mobilize.core.domain.value.UIDGenVO" >
+		UPDATE UID_GEN 
+		SET COUNT = #{count},
+		UID_GEN_TIMESTAMP = now() 
+		WHERE OBJTYPE = #{objectType}
+    </update>
+    <delete id="deleteUIDObjByType" parameterType="String" >
+        DELETE
+		FROM UID_GEN 
+		WHERE OBJTYPE = #{type}
+    </delete>    
+</mapper>

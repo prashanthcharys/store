@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="autoAsyncAppender" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="autoCriticalLog" />
+		<appender-ref ref="autoNormalLog" />
+		<appender-ref ref="CONSOLE" />
+	</appender>
+
+	<!-- CONSOLE - Appender to write log messages to the Console. -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{HH:mm:ss,SSS} %-5p [%-14.14t][%-22.22c{3}][%X{sessionId}] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Appender to write log messages to the System Log. -->
+	<appender name="autoNormalLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="C://temp/logs/autoMobile.log" />
+		<param name="Threshold" value="DEBUG" />
+		<param name="MaxFileSize" value="2048MB" />
+		<param name="MaxBackupIndex" value="25" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p [%t][%d{dd MMM HH:mm:ss}](%c) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Appender to write Errors to the System error log. -->
+	<appender name="autoCriticalLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="C://temp/logs/autoMobileCritical.log" />
+		<param name="MaxFileSize" value="2048MB" />
+		<param name="Threshold" value="ERROR" />
+		<param name="MaxBackupIndex" value="25" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p [%t][%d{dd MMM HH:mm:ss}](%c) - %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="autoAsyncAppender" />
+	</root>
+
+</log4j:configuration>

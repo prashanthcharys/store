@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- User Mapper with Nested Results for Collection -->
+<mapper namespace="com.mobilize.core.data.CardDetailsMapper">
+
+    <resultMap id="cardDetailsResultMap" type="CardDetailsVO">
+        <id property="uid" column="UID" />
+        <result property="cardNumber" column="CARDNUMBER" />
+        <result property="firstName" column="FIRSTNAME" />
+		<result property="lastName" column="LASTNAME" />
+        <result property="expDate" column="EXPDATE" />
+		<result property="type" column="TYPE" />
+        <result property="cvvCode" column="CVVCODE" />
+        <result property="timeStamp" column="CARD_DTL_TIMESTAMP" />
+        
+    </resultMap>
+
+	    
+    <select id="getCardDetailsById" resultType="com.mobilize.core.domain.value.CardDetailsVO">
+        SELECT *
+        FROM CARD_DETAILS
+        WHERE UID = #{uid}
+    </select>
+    <select id="getCardDetailsByCardNumber" resultType="com.mobilize.core.domain.value.CardDetailsVO">
+        SELECT *
+        FROM CARD_DETAILS
+        WHERE CARDNUMBER = #{cardNumber}
+    </select>
+    <insert id="insertCardDetails" parameterType="com.mobilize.core.domain.value.CardDetailsVO" >
+		INSERT 
+		INTO CARD_DETAILS
+		VALUES(#{uid},#{cardNumber},#{firstName},#{lastName},#{expDate},#{type},#{cvvCode},now())
+	</insert>    
+    <update id="updateCardDetailsById" parameterType="com.mobilize.core.domain.value.CardDetailsVO" >
+		UPDATE CARd_DETAILS 
+		SET 
+		CARDNUMBER=#{cardNumber} ,
+		FIRSTNAME=#{firstName} ,
+		LASTNAME=#{lastName} ,
+		EXPDATE=#{expDate} ,
+		TYPE=#{type} ,
+		CVVCODE=#{cvvCode},
+		CARD_DTL_TIMESTAMP=now()
+		WHERE 
+		UID=#{uid}
+    </update>
+    <delete id="deleteCardDetailsByCardNumber" parameterType="String" >
+        DELETE
+		FROM CARD_DETAILS 
+		WHERE 
+		CARDNUMBER=#{cardNumber}
+    </delete>
+    
+ </mapper>

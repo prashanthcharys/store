@@ -1,0 +1,320 @@
+<mapping>
+	<class name="com.mobilize.core.domain.value.UserVO">
+		<map-to xml="user" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>		
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="password" type="string">
+			<bind-xml name="password" node="element" />
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>	
+	</class>
+	<class name="com.mobilize.core.domain.value.UserDetailsVO">
+		<map-to xml="userDetails" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="password" type="string">
+			<bind-xml name="password" node="element" />
+		</field>		
+		<field name="firstName" type="string">
+			<bind-xml name="firstName" node="element" />
+		</field>
+		<field name="lastName" type="string">
+			<bind-xml name="lastName" node="element" />
+		</field>
+		<field name="addressLine1" type="string">
+			<bind-xml name="addressLine1" node="element" />
+		</field>
+		<field name="addressLine2" type="string">
+			<bind-xml name="addressLine2" node="element" />
+		</field>
+		<field name="city" type="string">
+			<bind-xml name="city" node="element" />
+		</field>
+		<field name="state" type="string">
+			<bind-xml name="state" node="element" />
+		</field>
+		<field name="zip" type="string">
+			<bind-xml name="zip" node="element" />
+		</field>
+		<field name="country" type="string">
+			<bind-xml name="country" node="element" />
+		</field>
+		<field name="homePhone" type="string">
+		<bind-xml name="homePhone" node="element" />
+		</field>
+		<field name="mobilePhone" type="string">
+		<bind-xml name="mobilePhone" node="element" />
+		</field>
+		<field name="emailId" type="string">
+		<bind-xml name="emailId" node="element" />
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>	
+	</class>
+    <class name="com.mobilize.core.domain.value.CarDetailsVO">
+		<map-to xml="carDetailsVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="make" type="string">
+			<bind-xml name="make" node="element" />
+		</field>
+		<field name="model" type="string">
+			<bind-xml name="model" node="element" />
+		</field>
+		<field name="year" type="string">
+			<bind-xml name="year" node="element" />
+		</field>
+		<field name="color" type="string">
+			<bind-xml name="color" node="element" />
+		</field>
+		<field name="mileage" type="int">
+			<bind-xml name="mileage" node="element" />
+		</field>
+		<field name="price" type="double">
+			<bind-xml name="price" node="element" />
+		</field>
+		<field name="comments" type="string">
+			<bind-xml name="comments" node="element" />
+		</field>
+		<field name="mobilePhone" type="string">
+			<bind-xml name="mobilePhone" node="element" />
+		</field>
+		<field name="emailId" type="string">
+			<bind-xml name="emailId" node="element" />
+		</field>		
+		<field name="sellerName" type="string">
+			<bind-xml name="sellerName" node="element" />
+		</field>		
+	</class>
+	<class name="com.mobilize.core.domain.value.CarSummaryVO">
+		<map-to xml="carSummaryVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="make" type="string">
+			<bind-xml name="make" node="element" />
+		</field>
+		<field name="model" type="string">
+			<bind-xml name="model" node="element" />
+		</field>
+		<field name="latitude" type="double">
+			<bind-xml name="latitude" node="element" />
+		</field>
+		<field name="longitude" type="double">
+			<bind-xml name="longitude" node="element" />
+		</field>
+	</class>
+	<class name="com.mobilize.core.domain.value.CardDetailsVO">
+		<map-to xml="cardDetailsVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="cardNumber" type="string">
+			<bind-xml name="cardNumber" node="element" />
+		</field>
+		<field name="firstName" type="string">
+			<bind-xml name="firstName" node="element" />
+		</field>
+		<field name="lastName" type="string">
+			<bind-xml name="lastName" node="element" />
+		</field>
+		<field name="expDate" type="date">
+			<bind-xml name="expDate" node="element" />
+		</field>
+		<field name="type" type="string">
+			<bind-xml name="type" node="element" />
+		</field>
+		<field name="cvvCode" type="int">
+			<bind-xml name="cvvCode" node="element" />
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>
+	</class>
+	<class name="com.mobilize.core.domain.value.PaymentDetailsVO">
+		<map-to xml="paymentDetailsVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="cardNumber" type="string">
+			<bind-xml name="cardNumber" node="element" />
+		</field>
+		<field name="carId" type="string">
+			<bind-xml name="carId" node="element" />
+		</field>
+		<field name="amount" type="float">
+			<bind-xml name="amount" node="element" />
+		</field>
+		<field name="transactionDate" type="date">
+			<bind-xml name="tranDateString" node="element" />
+		</field>		
+		<field name="tranDateString" type="string">
+			<bind-xml name="tranDateString" node="element" />
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>
+	</class>	
+	<class name="com.mobilize.core.domain.value.UserCriteriaVO">
+		<map-to xml="userCriteriaVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="yearFrom" type="string">
+			<bind-xml name="yearFrom" node="element" />
+		</field>
+		<field name="yearTo" type="string">
+			<bind-xml name="yearTo" node="element" />
+		</field>		
+		<field name="make" type="string">
+			<bind-xml name="make" node="element" />
+		</field>
+		<field name="model" type="string">
+			<bind-xml name="model" node="element" />
+		</field>
+		<field name="color" type="string">
+			<bind-xml name="color" node="element" />
+		</field>
+		<field name="priceFrom" type="double">
+			<bind-xml name="priceFrom" node="element" />
+		</field>
+		<field name="priceTo" type="double">
+			<bind-xml name="priceTo" node="element" />
+		</field>
+		<field name="mileage" type="int">
+			<bind-xml name="mileage" node="element" />
+		</field>
+		<field name="radius" type="int">
+			<bind-xml name="radius" node="element" />
+		</field>		
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>
+	</class>
+	<class name="com.mobilize.core.domain.value.SearchCriteriaVO">
+		<map-to xml="searchCriteriaVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>		
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="criteria" type="string">
+			<bind-xml name="criteria" node="element" />
+		</field>
+		<field name="timeStamp" type="date">
+			<bind-xml name="timeStamp" node="element" />
+		</field>		
+	</class>
+	<class name="com.mobilize.core.domain.value.LocationVO">
+		<map-to xml="locvo" />
+		<field name="userId" type="string">
+			<bind-xml name="userId" node="element" />
+		</field>
+		<field name="userType" type="string">
+			<bind-xml name="userType" node="element" />
+		</field>		
+		<field name="latitude" type="double">
+			<bind-xml name="latitude" node="element" />
+		</field>
+		<field name="longitude" type="double">
+			<bind-xml name="longitude" node="element" />
+		</field>
+	</class>
+	<class name="com.mobilize.core.domain.value.BuyerCriteriaVO">
+		<map-to xml="userCriteriaVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+		<field name="yearFrom" type="string">
+			<bind-xml name="yearFrom" node="element" />
+		</field>
+		<field name="yearTo" type="string">
+			<bind-xml name="yearTo" node="element" />
+		</field>		
+		<field name="make" type="string">
+			<bind-xml name="make" node="element" />
+		</field>
+		<field name="model" type="string">
+			<bind-xml name="model" node="element" />
+		</field>
+		<field name="color" type="string">
+			<bind-xml name="color" node="element" />
+		</field>
+		<field name="priceFrom" type="double">
+			<bind-xml name="priceFrom" node="element" />
+		</field>
+		<field name="priceTo" type="double">
+			<bind-xml name="priceTo" node="element" />
+		</field>
+		<field name="mileage" type="int">
+			<bind-xml name="mileage" node="element" />
+		</field>
+		<field name="radius" type="int">
+			<bind-xml name="radius" node="element" />
+		</field>
+		<field name="yearPref" type="int">
+			<bind-xml name="yearPref" node="element" />
+		</field>
+		<field name="makePref" type="int">
+			<bind-xml name="makePref" node="element" />
+		</field>
+		<field name="modelPref" type="int">
+			<bind-xml name="modelPref" node="element" />
+		</field>
+		<field name="colorPref" type="int">
+			<bind-xml name="colorPref" node="element" />
+		</field>
+		<field name="pricePref" type="int">
+			<bind-xml name="pricePref" node="element" />
+		</field>
+		<field name="mileagePref" type="int">
+			<bind-xml name="mileagePref" node="element" />
+		</field>
+		<field name="radiusPref" type="int">
+			<bind-xml name="radiusPref" node="element" />
+		</field>
+	</class>
+	<class name="com.mobilize.core.domain.value.BuyerCriteriaSummaryVO">
+		<map-to xml="userCriteriaSummaryVO" />
+		<field name="uid" type="string">
+			<bind-xml name="uid" node="element" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="element" />
+		</field>
+				<field name="make" type="string">
+			<bind-xml name="make" node="element" />
+		</field>
+		<field name="model" type="string">
+			<bind-xml name="model" node="element" />
+		</field>
+		<field name="color" type="string">
+			<bind-xml name="color" node="element" />
+		</field>
+	</class>		
+</mapping>
