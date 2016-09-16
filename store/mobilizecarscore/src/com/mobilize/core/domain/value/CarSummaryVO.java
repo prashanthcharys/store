@@ -21,6 +21,7 @@ public class CarSummaryVO extends BaseVO implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
+	// sfdfsffsgsfgsfgs
 	public double getLatitude() {
 		return latitude;
 	}
